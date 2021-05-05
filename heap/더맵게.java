@@ -2,8 +2,9 @@ import java.util.Iterator;
 import java.util.PriorityQueue;
 
 /**
-* 통과하지느 못함 (아직!) 
-*/
+ * 프로그래머스:heap:더 맵게
+ * https://programmers.co.kr/learn/courses/30/lessons/42626
+ */
 class Solution {
     public int solution(int[] scoville, int K) {
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
