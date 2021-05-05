@@ -7,34 +7,28 @@ import java.util.PriorityQueue;
 class Solution {
     public int solution(int[] scoville, int K) {
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-
         for (int food : scoville) {
             minHeap.add(food);
         }
 
-        // 제일 처음 노드, 그 다음 노드의 합이 k 보다 클 경우?
-        boolean flag = false;
         int answer = 0;
-        while (!flag) {
+        while (!rootMoreThanK(minHeap, K)) {
             if (minHeap.size() == 1) {
                 answer = -1;
-                flag = true;
+                break;
             } else {
-                Iterator<Integer> itr = minHeap.iterator();
-                int root = itr.next();
-                int nextNode = itr.next();
-                int calculated = root + (nextNode * 2);
-                if (calculated < K) {
-                    // 첫번째, 두번째 노드 삭제
-                    minHeap.poll();
-                    minHeap.poll();
-                    minHeap.offer(calculated);
-                } else {
-                    flag = true;
-                }
+                int root = minHeap.poll();
+                int second = minHeap.poll();
+                int calculated = root + (second * 2);
+                minHeap.offer(calculated);
                 ++answer;
             }
         }
         return answer;
+    }
+
+    public boolean rootMoreThanK(PriorityQueue<Integer> heap, int K) {
+        int root = heap.peek();
+        return root >= K;
     }
 }
