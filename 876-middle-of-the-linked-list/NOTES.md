@@ -17,4 +17,4 @@ public ListNode detectCycle(ListNode head) {
 
 ```
 
-문제풀이 2개 포인터
+문제풀이 2개 포인터를 나눠서 풀이
