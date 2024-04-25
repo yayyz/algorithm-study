@@ -11,18 +11,15 @@
 class Solution {
     // there should be a better approach.... :( 
     public ListNode middleNode(ListNode head) {
-        int size = 0;
-        ListNode ptr = head;
-        while (ptr != null) {
-            size++;
-            ptr = ptr.next;
-        }    
-        
-        int pos = size / 2;
+        // make them point to the start 
+        ListNode tail = head;
+        ListNode mid = head;
 
-        for(int i = 1; i <= pos; i++) {
-            head = head.next;
+        while(tail != null && tail.next != null) {
+            mid = mid.next;
+            tail = tail.next.next;
         }
-        return head;
+
+        return mid;
     }
 }
