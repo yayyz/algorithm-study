@@ -10,20 +10,18 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        // iteration solution: 
-        // traverse first & add to ArrayList
-        ListNode ptr = head;
-        List<Integer> list = new ArrayList<Integer>();
-        while(ptr != null) {
-            list.add(0, ptr.val);
-            ptr = ptr.next;
-        }
+        // O(n) solution
+        ListNode reversedList = null;
+        ListNode curr = head;
 
-        ptr = head;
-        for(int num: list) {
-            ptr.val = num;
-            ptr = ptr.next;            
+        while(curr != null) {
+            ListNode next = curr.next;
+            // re-assign the pointer to the "reversed list"
+            curr.next = reversedList;
+            reversedList = curr;
+            // traverse the original list 
+            curr = next;
         }
-        return head;
+        return reversedList;
     }
 }
