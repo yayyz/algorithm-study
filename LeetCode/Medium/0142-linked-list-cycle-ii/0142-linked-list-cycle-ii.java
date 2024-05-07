@@ -10,6 +10,7 @@
  * }
  */
 public class Solution {
+    // hashtable solution
     public ListNode detectCycle(ListNode head) {
         Map<ListNode, Integer> nodeMap = new HashMap<ListNode, Integer>();
         nodeMap.put(head, 0);
